@@ -26,9 +26,17 @@ const createMdStore = async (): Promise<Store> => {
   }
 }
 
-export const render = async (text: string): Promise<MarkdownRenderResult> => {
+let _md: MarkdownIt | undefined
+
+const getMd = async () => {
+  if (_md) return _md
   const store = await createMdStore()
-  const md = new MarkdownIt(store, [], 'https://q.trap.jp')
+  _md = new MarkdownIt(store, [], 'https://q.trap.jp')
+  return _md
+}
+
+export const render = async (text: string): Promise<MarkdownRenderResult> => {
+  const md = await getMd()
   return md.render(text)
 }
 

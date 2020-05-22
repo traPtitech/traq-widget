@@ -7,6 +7,7 @@ import { render } from '../markdown'
 import { getStore } from '../store'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'
+import { QuotedMessage } from './QuotedMessage'
 
 export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(
@@ -34,6 +35,9 @@ const InnerMessageWidget = async (
     const message = (await apis.getMessage(id)).data
     const rendered = await render(message.content)
 
+    const files = rendered.embeddings.filter(e => e.type === 'file')
+    const quotedMessages = rendered.embeddings.filter(e => e.type === 'message')
+
     const store = await getStore()
     const user = store.userIdMap.get(message.userId)
 
@@ -44,6 +48,10 @@ const InnerMessageWidget = async (
           <p>${user?.displayName}(@${user?.name})</p>
         </header>
         <main class="markdown-body">${unsafeHTML(rendered.renderedText)}</main>
+        <section>
+          ${files.map(({ id }) => id)}
+          ${quotedMessages.map(({ id }) => QuotedMessage(id))}
+        </section>
         <footer>
           <a href="https://q.trap.jp/messages/${id}">traQで開く</a>
         </footer>
