@@ -1,6 +1,9 @@
 import { html, TemplateResult } from 'lit-html'
 import { until } from 'lit-html/directives/until.js'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 import { apis } from '../apis'
+import { render } from '../markdown'
+import { getStore } from '../store'
 
 export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(
@@ -26,10 +29,15 @@ const InnerMessageWidget = async (
 
   try {
     const message = (await apis.getMessage(id)).data
+    const rendered = await render(message.content)
+
+    const store = await getStore()
+    const user = store.userIdMap.get(message.userId)
 
     return html`
       <div>
-        ${message.content}
+        <div>${user?.displayName}(@${user?.name})</div>
+        <div>${unsafeHTML(rendered.renderedText)}</div>
       </div>
     `
   } catch {
