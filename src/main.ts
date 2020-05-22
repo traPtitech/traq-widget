@@ -1,6 +1,7 @@
 import { html, render, nothing } from 'lit-html'
 import { Widget } from './components/Widget'
 import { Login } from './components/Login'
+import './index.scss'
 
 export const rerender = (): void => {
   const app = html`

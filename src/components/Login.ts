@@ -3,14 +3,16 @@ import { until } from 'lit-html/directives/until.js'
 import { rerender } from '../main'
 import { apis } from '../apis'
 
+import './Login.scss'
+
 export const Login = (): TemplateResult =>
-  html`${until(InnerLogin(), html`<p>Loading...</p>`)}`
+  html`${until(InnerLogin(), html`<aside id="login"><p>Loading...</p></aside>`)}`
 
 const InnerLogin = async (): Promise<TemplateResult> => {
   try {
     await apis.getMe()
 
-    return html`<p>デバッグ用表示: ログイン済み</p>`
+    return html`<aside id="login"><p>デバッグ用表示: ログイン済み</p></aside>`
     // eslint-disable-next-line no-empty
   } catch {}
 
@@ -33,11 +35,13 @@ const InnerLogin = async (): Promise<TemplateResult> => {
   }
 
   return html`
-    <p>デバッグ用ログイン</p>
-    <form @submit=${login}>
-      <input name="id" type="text" />
-      <input name="pass" type="password" />
-      <button type="submit">Login</button>
-    </form>
+    <aside id="login">
+      <p>デバッグ用ログイン</p>
+      <form @submit=${login}>
+        <input name="id" type="text" />
+        <input name="pass" type="password" />
+        <button type="submit">Login</button>
+      </form>
+    </aside>
   `
 }

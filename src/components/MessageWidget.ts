@@ -5,9 +5,10 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 import { apis, getFileUrl } from '../apis'
 import { render } from '../markdown'
 import { getStore } from '../store'
+import { QuotedMessage } from './QuotedMessage'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'
-import { QuotedMessage } from './QuotedMessage'
+import './MessageWidget.scss'
 
 export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(

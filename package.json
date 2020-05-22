@@ -43,7 +43,8 @@
     "@traptitech/traq": "^3.1.2-5",
     "@traptitech/traq-markdown-it": "^2.3.0",
     "idb-keyval": "^3.2.0",
-    "lit-html": "^1.2.1"
+    "lit-html": "^1.2.1",
+    "ress": "^2.0.4"
   },
   "repository": {
     "type": "git",

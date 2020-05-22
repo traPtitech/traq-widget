@@ -7,6 +7,7 @@ import { render } from '../markdown'
 import { getStore } from '../store'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'
+import './QuotedMessage.scss'
 
 export const QuotedMessage = (id: string): TemplateResult =>
   html`${until(
