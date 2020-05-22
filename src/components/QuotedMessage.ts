@@ -13,7 +13,7 @@ export const QuotedMessage = (id: string): TemplateResult =>
   html`${until(
     InnerQuotedMessage(id),
     html`
-      <article class="quoted-message" data-is-loading>
+      <article class="quoted-message message" data-is-loading>
         <main class="loading">Now Loading</main>
       </article>
     `
@@ -30,7 +30,7 @@ const InnerQuotedMessage = async (
     const user = store.userIdMap.get(message.userId)
 
     return html`
-      <article class="quoted-message">
+      <article class="quoted-message message">
         <header>
           <img src=${ifDefined(getFileUrl(user?.iconFileId))} />
           <p>${user?.displayName}(@${user?.name})</p>

@@ -1,14 +1,17 @@
-.message {
+.main-message {
   margin: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(33, 63, 99, 0.3);
+}
 
+.message {
   header {
     display: flex;
     img {
       height: 1.5em;
       width: 1.5em;
+      border-radius: 50%;
     }
   }
 }

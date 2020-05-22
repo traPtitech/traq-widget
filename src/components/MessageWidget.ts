@@ -14,7 +14,7 @@ export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(
     InnerMessageWidget(params),
     html`
-      <article class="message" data-is-loading>
+      <article class="main-message message" data-is-loading>
         <main class="loading">Now Loading</main>
       </article>
     `
@@ -26,7 +26,7 @@ const InnerMessageWidget = async (
   const id = params.get('id')
   if (id === null) {
     return html`
-      <article class="message" data-is-error>
+      <article class="main-message message" data-is-error>
         <main class="error">IDが存在しません</main>
       </article>
     `
@@ -43,7 +43,7 @@ const InnerMessageWidget = async (
     const user = store.userIdMap.get(message.userId)
 
     return html`
-      <article class="message">
+      <article class="main-message message">
         <header>
           <img src=${ifDefined(getFileUrl(user?.iconFileId))} />
           <p>${user?.displayName}(@${user?.name})</p>
@@ -60,7 +60,7 @@ const InnerMessageWidget = async (
     `
   } catch {
     return html`
-      <article class="message" data-is-error>
+      <article class="main-message message" data-is-error>
         <main class="error">メッセージ(ID: ${id})の取得に失敗しました</main>
       </article>
     `
