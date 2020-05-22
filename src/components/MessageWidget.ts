@@ -42,7 +42,9 @@ const InnerMessageWidget = async (
           <p>${user?.displayName}(@${user?.name})</p>
         </header>
         <main>${unsafeHTML(rendered.renderedText)}</main>
-        <footer></footer>
+        <footer>
+          <a href="https://q.trap.jp/messages/${id}">traQで開く</a>
+        </footer>
       </article>
     `
   } catch {
