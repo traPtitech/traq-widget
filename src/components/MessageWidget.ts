@@ -6,6 +6,8 @@ import { apis, getFileUrl } from '../apis'
 import { render } from '../markdown'
 import { getStore } from '../store'
 
+import '@traptitech/traq-markdown-it/src/css/index.scss'
+
 export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(
     InnerMessageWidget(params),
@@ -41,7 +43,7 @@ const InnerMessageWidget = async (
           <img src=${ifDefined(getFileUrl(user?.iconFileId))} />
           <p>${user?.displayName}(@${user?.name})</p>
         </header>
-        <main>${unsafeHTML(rendered.renderedText)}</main>
+        <main class="markdown-body">${unsafeHTML(rendered.renderedText)}</main>
         <footer>
           <a href="https://q.trap.jp/messages/${id}">traQで開く</a>
         </footer>
