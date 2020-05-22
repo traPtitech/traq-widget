@@ -1,5 +1,12 @@
-import { html, render } from 'lit-html'
+import { html, render, nothing } from 'lit-html'
+import { TraQLogin } from './components/TraQLogin'
 
-const app = html`<p>po</p>`
+export const rerender = (): void => {
+  const app = html`
+    <p>po</p>
+    ${process.env.NODE_ENV !== 'production' ? TraQLogin() : nothing}
+  `
+  render(app, document.body)
+}
 
-render(app, document.body)
+rerender()

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { EnvironmentPlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -94,7 +95,10 @@ module.exports = {
   devServer: {
     port: 8500,
     proxy: {
-      '/api/v3': 'https://q.trap.jp'
+      '/api/v3/*': {
+        target: 'https://q.trap.jp/',
+        changeOrigin: true
+      }
     }
   }
 }
