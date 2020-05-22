@@ -1,7 +1,7 @@
 {
   "name": "traq-widget",
   "version": "1.0.0",
-  "description": "",
+  "description": "traQ widget",
   "main": "webpack.config.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
@@ -41,5 +41,14 @@
     "@traptitech/traq-markdown-it": "^2.3.0",
     "idb-keyval": "^3.2.0",
     "lit-html": "^1.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/traPtitech/traq-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/traPtitech/traq-widget/issues"
+  },
+  "homepage": "https://github.com/traPtitech/traq-widget#readme",
+  "private": true
 }
