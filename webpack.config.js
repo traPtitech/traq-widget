@@ -1,54 +1,54 @@
-const { EnvironmentPlugin } = require('webpack');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const { EnvironmentPlugin } = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const BrotliPlugin = require("brotli-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const BrotliPlugin = require('brotli-webpack-plugin')
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  entry: "./src/main.ts",
+  entry: './src/main.ts',
   output: {
-    filename: "[name].[chunkhash].js"
+    filename: '[name].[chunkhash].js'
   },
   resolve: {
-    extensions: [".ts", ".js"]
+    extensions: ['.ts', '.js']
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        exclude: "/node_modules/",
-        use: "ts-loader"
+        exclude: '/node_modules/',
+        use: 'ts-loader'
       },
       {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
+          'css-loader',
           {
             loader: 'sass-loader',
             options: { implementation: require('sass') }
           }
         ]
       }
-    ],
+    ]
   },
   plugins: [
     new EnvironmentPlugin(['NODE_ENV']),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      inject: "head",
+      template: './src/index.html',
+      inject: 'head',
       scriptLoading: 'defer'
     }),
-    new MiniCssExtractPlugin({ filename: "[name].[chunkhash].css" }),
+    new MiniCssExtractPlugin({ filename: '[name].[chunkhash].css' }),
     new PreloadWebpackPlugin({
-      chunks: "app",
-      rel: "preload",
-      include: "allAssets",
+      chunks: 'app',
+      rel: 'preload',
+      include: 'allAssets',
       fileBlacklist: [/\.(?:LICENSE\.txt|map)$/]
     }),
     new FixStyleOnlyEntriesPlugin()
@@ -63,14 +63,14 @@ module.exports = {
             beautify: false
           }
         },
-        extractComments: "some"
+        extractComments: 'some'
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorPluginOptions: {
           preset: [
             'advanced',
             {
-              cssDeclarationSorter : {
+              cssDeclarationSorter: {
                 order: 'alphabetically',
                 keepOverrides: true
               },
@@ -79,11 +79,11 @@ module.exports = {
               reduceIdents: false,
               zindex: false
             }
-          ],
+          ]
         }
       }),
       new BrotliPlugin({
-        asset: "[path].br[query]",
+        asset: '[path].br[query]',
         test: /\.(js|css)$/,
         threshold: 1024,
         minRatio: 0.9
@@ -97,4 +97,4 @@ module.exports = {
       '/api/v3': 'https://q.trap.jp'
     }
   }
-};
+}

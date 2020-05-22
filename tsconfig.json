@@ -13,6 +13,11 @@
       "es2018",
       "dom",
       "dom.iterable"
+    ],
+    "plugins": [
+      {
+        "name": "typescript-lit-html-plugin"
+      }
     ]
   },
   "include": [
