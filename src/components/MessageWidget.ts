@@ -1,7 +1,8 @@
 import { html, TemplateResult } from 'lit-html'
 import { until } from 'lit-html/directives/until.js'
+import { ifDefined } from 'lit-html/directives/if-defined'
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
-import { apis } from '../apis'
+import { apis, getFileUrl } from '../apis'
 import { render } from '../markdown'
 import { getStore } from '../store'
 
@@ -9,9 +10,9 @@ export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(
     InnerMessageWidget(params),
     html`
-      <div class="message" data-is-loading>
-        <span class="loading">Now Loading</span>
-      </div>
+      <article class="message" data-is-loading>
+        <main class="loading">Now Loading</main>
+      </article>
     `
   )}`
 
@@ -21,9 +22,9 @@ const InnerMessageWidget = async (
   const id = params.get('id')
   if (id === null) {
     return html`
-      <div class="message" data-is-error>
-        <span class="error">IDが存在しません</span>
-      </div>
+      <article class="message" data-is-error>
+        <main class="error">IDが存在しません</main>
+      </article>
     `
   }
 
@@ -35,16 +36,20 @@ const InnerMessageWidget = async (
     const user = store.userIdMap.get(message.userId)
 
     return html`
-      <div>
-        <div>${user?.displayName}(@${user?.name})</div>
-        <div>${unsafeHTML(rendered.renderedText)}</div>
-      </div>
+      <article class="message">
+        <header>
+          <img src=${ifDefined(getFileUrl(user?.iconFileId))} />
+          <p>${user?.displayName}(@${user?.name})</p>
+        </header>
+        <main>${unsafeHTML(rendered.renderedText)}</main>
+        <footer></footer>
+      </article>
     `
   } catch {
     return html`
-      <div class="message" data-is-error>
-        <span class="error">メッセージ(ID: ${id})の取得に失敗しました</span>
-      </div>
+      <article class="message" data-is-error>
+        <main class="error">メッセージ(ID: ${id})の取得に失敗しました</main>
+      </article>
     `
   }
 }
