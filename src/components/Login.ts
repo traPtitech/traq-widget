@@ -1,13 +1,18 @@
 import { html, TemplateResult } from 'lit-html'
 import { until } from 'lit-html/directives/until.js'
 import { rerender } from '../main'
+import { apis } from '../apis'
 
-export const TraQLogin = (): TemplateResult =>
-  html`${until(InnerTraQLogin(), html`<p>Loading...</p>`)}`
+export const Login = (): TemplateResult =>
+  html`${until(InnerLogin(), html`<p>Loading...</p>`)}`
 
-const InnerTraQLogin = async (): Promise<TemplateResult> => {
-  const isLoggedIn = (await fetch('/api/v3/users/me')).ok
-  if (isLoggedIn) return html`<p>デバッグ用表示: ログイン済み</p>`
+const InnerLogin = async (): Promise<TemplateResult> => {
+  try {
+    await apis.getMe()
+
+    return html`<p>デバッグ用表示: ログイン済み</p>`
+    // eslint-disable-next-line no-empty
+  } catch {}
 
   const login = async (e: Event) => {
     e.preventDefault()
@@ -16,20 +21,14 @@ const InnerTraQLogin = async (): Promise<TemplateResult> => {
     const $id = $form.querySelector('[name="id"]') as HTMLInputElement
     const $pass = $form.querySelector('[name="pass"]') as HTMLInputElement
 
-    const isLoggedIn = (
-      await fetch('/api/v3/login', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: $id.value,
-          password: $pass.value
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    try {
+      await apis.login(undefined, {
+        name: $id.value,
+        password: $pass.value
       })
-    ).ok
-    if (isLoggedIn) {
       rerender()
+    } catch (e) {
+      console.error('ログインに失敗しました', e)
     }
   }
 

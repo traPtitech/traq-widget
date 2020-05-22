@@ -1,10 +1,10 @@
 import { html, render, nothing } from 'lit-html'
-import { TraQLogin } from './components/TraQLogin'
+import { Widget } from './components/Widget'
+import { Login } from './components/Login'
 
 export const rerender = (): void => {
   const app = html`
-    <p>po</p>
-    ${process.env.NODE_ENV !== 'production' ? TraQLogin() : nothing}
+    ${Widget()} ${process.env.NODE_ENV !== 'production' ? Login() : nothing}
   `
   render(app, document.body)
 }

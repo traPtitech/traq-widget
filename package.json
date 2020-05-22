@@ -37,6 +37,7 @@
     "webpack-fix-style-only-entries": "^0.5.0"
   },
   "dependencies": {
+    "@traptitech/traq": "^3.1.2-5",
     "lit-html": "^1.2.1"
   }
 }
