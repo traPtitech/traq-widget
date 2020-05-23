@@ -1,6 +1,6 @@
 {
   "name": "traq-widget",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "traQ widget",
   "main": "webpack.config.js",
   "scripts": {
