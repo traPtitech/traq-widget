@@ -6,6 +6,7 @@ import { apis, getFileUrl } from '../apis'
 import { render } from '../markdown'
 import { getStore } from '../store'
 import { QuotedMessage } from './QuotedMessage'
+import { File } from './File'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'
 import './MessageWidget.scss'
@@ -50,7 +51,7 @@ const InnerMessageWidget = async (
         </header>
         <main class="markdown-body">${unsafeHTML(rendered.renderedText)}</main>
         <section>
-          ${files.map(({ id }) => id)}
+          ${files.map(({ id }) => File(id))}
           ${quotedMessages.map(({ id }) => QuotedMessage(id))}
         </section>
         <footer>
