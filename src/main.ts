@@ -1,5 +1,6 @@
 import { html, render, nothing } from 'lit-html'
 import { setupGlobalFuncs } from './setupGlobalFuncs'
+import { setAdjustHandler } from './adjustHeight'
 import { Widget } from './components/Widget'
 import { Login } from './components/Login'
 import './index.scss'
@@ -14,3 +15,4 @@ export const rerender = (): void => {
 rerender()
 
 setupGlobalFuncs()
+setAdjustHandler()
