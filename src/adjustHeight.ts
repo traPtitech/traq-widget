@@ -2,7 +2,7 @@ import { debounce } from 'throttle-debounce'
 
 export const adjust = (): void =>
   window.parent.postMessage(
-    32 + document.body.getBoundingClientRect().height,
+    [location.href, 32 + document.body.getBoundingClientRect().height],
     '*'
   )
 
