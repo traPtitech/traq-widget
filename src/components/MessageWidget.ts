@@ -55,7 +55,9 @@ const InnerMessageWidget = async (
           ${quotedMessages.map(({ id }) => QuotedMessage(id))}
         </section>
         <footer>
-          <a href="https://q.trap.jp/messages/${id}">traQで開く</a>
+          <a href="https://q.trap.jp/messages/${id}" target="_blank">
+            traQで開く
+          </a>
         </footer>
       </article>
     `
