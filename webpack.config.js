@@ -59,7 +59,7 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          ecma: 2015,
+          ecma: 2017,
           output: {
             beautify: false
           }
