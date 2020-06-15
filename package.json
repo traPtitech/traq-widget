@@ -46,7 +46,7 @@
     "idb-keyval": "^3.2.0",
     "lit-html": "^1.2.1",
     "ress": "^2.0.4",
-    "throttle-debounce": "^2.1.0"
+    "throttle-debounce": "^2.2.1"
   },
   "repository": {
     "type": "git",
