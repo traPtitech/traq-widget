@@ -7,6 +7,7 @@ import { render } from '../markdown'
 import { getStore } from '../store'
 import { QuotedMessage } from './QuotedMessage'
 import { File } from './File'
+import { dateToString } from '../utils'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'
 import './MessageWidget.scss'
@@ -47,7 +48,8 @@ const InnerMessageWidget = async (
       <article class="main-message message">
         <header>
           <img src=${ifDefined(getFileUrl(user?.iconFileId))} />
-          <p>${user?.displayName}(@${user?.name})</p>
+          <p class="name">${user?.displayName}(@${user?.name})</p>
+          <p class="date">${dateToString(message.createdAt)}</p>
         </header>
         <main class="markdown-body">${unsafeHTML(rendered.renderedText)}</main>
         <section>
