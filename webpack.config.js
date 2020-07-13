@@ -30,10 +30,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          {
-            loader: 'sass-loader',
-            options: { implementation: require('sass') }
-          }
+          'sass-loader'
         ]
       }
     ]
