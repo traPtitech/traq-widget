@@ -11,6 +11,7 @@ import { dateToString } from '../utils'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'
 import './MessageWidget.scss'
+import { EmbeddingFile, EmbeddingMessage } from '@traptitech/traq-markdown-it'
 
 export const MessageWidget = (params: URLSearchParams): TemplateResult =>
   html`${until(
@@ -38,8 +39,12 @@ const InnerMessageWidget = async (
     const message = (await apis.getMessage(id)).data
     const rendered = await render(message.content)
 
-    const files = rendered.embeddings.filter(e => e.type === 'file')
-    const quotedMessages = rendered.embeddings.filter(e => e.type === 'message')
+    const files = rendered.embeddings.filter(
+      (e): e is EmbeddingFile => e.type === 'file'
+    )
+    const quotedMessages = rendered.embeddings.filter(
+      (e): e is EmbeddingMessage => e.type === 'message'
+    )
 
     const store = await getStore()
     const user = store.userIdMap.get(message.userId)
