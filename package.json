@@ -21,7 +21,7 @@
     "cssnano-preset-advanced": "^4.0.7",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-lit": "^1.2.2",
     "eslint-plugin-prettier": "^3.1.4",
     "fibers": "^5.0.0",
     "html-webpack-plugin": "^4.3.0",
