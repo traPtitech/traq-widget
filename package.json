@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@traptitech/traq": "^3.1.2-5",
-    "@traptitech/traq-markdown-it": "^3.2.0",
+    "@traptitech/traq-markdown-it": "^4.0.1",
     "idb-keyval": "^3.2.0",
     "lit-html": "^1.2.1",
     "ress": "^3.0.0",
