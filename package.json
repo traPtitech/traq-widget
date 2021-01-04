@@ -37,7 +37,7 @@
     "typescript-lit-html-plugin": "^0.9.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.3.0",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "^3.11.1",
     "webpack-fix-style-only-entries": "^0.6.0"
   },
   "dependencies": {
