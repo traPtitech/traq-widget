@@ -10,6 +10,6 @@ export const adjust = (): void =>
 export const setAdjustHandler = (): void => {
   if (window.parent) {
     window.addEventListener('load', adjust)
-    window.addEventListener('resize', debounce(100, adjust))
+    new ResizeObserver(debounce(100, adjust)).observe(document.body)
   }
 }
