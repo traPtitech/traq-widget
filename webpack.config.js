@@ -91,6 +91,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     port: 8500,
+    historyApiFallback: true,
     proxy: {
       '/api/v3/*': {
         target: 'https://q.trap.jp/',
