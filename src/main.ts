@@ -9,7 +9,7 @@ declare const process: { env: Record<string, string> }
 
 export const rerender = (): void => {
   if (process.env.NODE_ENV === 'production') {
-    render(Widget, document.body)
+    render(Widget(), document.body)
     return
   }
 
