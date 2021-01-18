@@ -1,4 +1,4 @@
-import { Store as IDBStore, get, set } from 'idb-keyval'
+import { createStore as createIDBStore, get, set } from 'idb-keyval'
 import { apis } from './apis'
 import { User, MyUserDetail, UserGroup, Channel, Stamp } from '@traptitech/traq'
 
@@ -15,7 +15,7 @@ import { User, MyUserDetail, UserGroup, Channel, Stamp } from '@traptitech/traq'
  * - channelIdMap: channelId/ChannelのMap (公開チャンネルに限る)
  * - stampNameMap: stampName/StampのMap
  */
-const store = new IDBStore('widget-store', 'widget-store')
+const store = createIDBStore('widget-store', 'widget-store')
 
 const isCacheAvailable = (date: unknown): boolean => {
   if (typeof date !== 'number' || date < 0) return false
@@ -95,12 +95,14 @@ const createStore = async (): Promise<Store> => {
     get<Map<string, Stamp>>('stampNameMap', store)
   ])
   return {
-    userIdMap,
-    userNameMap,
-    me,
-    userGroupIdMap,
-    channelIdMap,
-    stampNameMap
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
+    userIdMap: userIdMap!,
+    userNameMap: userNameMap!,
+    me: me!,
+    userGroupIdMap: userGroupIdMap!,
+    channelIdMap: channelIdMap!,
+    stampNameMap: stampNameMap!
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
   }
 }
 
