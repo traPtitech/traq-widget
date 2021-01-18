@@ -27,7 +27,7 @@ export const rerender = (): void => {
     return
   }
 
-  const app = html`${Widget()} ${!window.parent ? Login() : nothing}`
+  const app = html`${Widget()} ${window.parent === window ? Login() : nothing}`
   render(app, document.body)
 }
 
