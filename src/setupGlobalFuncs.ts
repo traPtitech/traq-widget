@@ -1,4 +1,4 @@
-import { toggleSpoiler } from "./markdown/spoiler"
+import { toggleSpoiler } from './markdown/spoiler'
 
 interface ExtendedWindow extends Window {
   openUserModal(userId: string): void
