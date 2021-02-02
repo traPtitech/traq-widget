@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import brotli from 'rollup-plugin-brotli'
 
 export default defineConfig({
+  base: './',
   server: {
     port: 8500,
     proxy: {
