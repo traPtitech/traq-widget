@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-html'
-import { until } from 'lit-html/directives/until.js'
+import { until } from 'lit-html/directives/until'
 import { apis } from '../apis'
 
 import './Login.scss'
