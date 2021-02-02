@@ -6,7 +6,7 @@ import { Login } from './components/Login'
 import './index.scss'
 
 export const rerender = (): void => {
-  if (import.meta.env.NODE_ENV === 'production') {
+  if (import.meta.env.PROD) {
     render(Widget(), document.body)
     return
   }
