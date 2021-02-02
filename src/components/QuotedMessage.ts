@@ -6,7 +6,8 @@ import { apis, getFileUrl } from '../apis'
 import { render } from '../markdown/markdown'
 import { getStore } from '../store'
 
-import '@traptitech/traq-markdown-it/src/css/index.scss'
+import '../markdown/markdown.scss'
+import 'katex/dist/katex.css'
 import './QuotedMessage.scss'
 
 export const QuotedMessage = (id: string): TemplateResult =>

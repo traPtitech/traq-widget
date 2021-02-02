@@ -10,7 +10,8 @@ import { File } from './File'
 import { dateToString } from '../utils'
 import { EmbeddingFile, EmbeddingMessage } from '@traptitech/traq-markdown-it'
 
-import '@traptitech/traq-markdown-it/src/css/index.scss'
+import '../markdown/markdown.scss'
+import 'katex/dist/katex.css'
 import './MessageWidget.scss'
 
 export const MessageWidget = (params: URLSearchParams): TemplateResult =>
