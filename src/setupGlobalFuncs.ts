@@ -1,3 +1,5 @@
+import { toggleSpoiler } from "./markdown/spoiler"
+
 interface ExtendedWindow extends Window {
   openUserModal(userId: string): void
   openGroupModal(userGroupId: string): void
@@ -16,4 +18,8 @@ export const setupGlobalFuncs = (): void => {
     if (!confirm(`traQで#${channelPath}を開きますか？`)) return
     window.open(`https://q.trap.jp/channels/${channelPath}`, '_blank')
   }
+
+  document.body.addEventListener('click', e => {
+    toggleSpoiler(e.target as HTMLElement)
+  })
 }
