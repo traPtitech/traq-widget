@@ -3,7 +3,7 @@ import { until } from 'lit-html/directives/until.js'
 import { ifDefined } from 'lit-html/directives/if-defined'
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 import { apis, getFileUrl } from '../apis'
-import { render } from '../markdown'
+import { render } from '../markdown/markdown'
 import { getStore } from '../store'
 
 import '@traptitech/traq-markdown-it/src/css/index.scss'

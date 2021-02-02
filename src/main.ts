@@ -5,10 +5,8 @@ import { Widget } from './components/Widget'
 import { Login } from './components/Login'
 import './index.scss'
 
-declare const process: { env: Record<string, string> }
-
 export const rerender = (): void => {
-  if (process.env.NODE_ENV === 'production') {
+  if (import.meta.env.NODE_ENV === 'production') {
     render(Widget(), document.body)
     return
   }
