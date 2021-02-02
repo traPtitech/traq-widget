@@ -1,9 +1,9 @@
-import {
+import type {
   traQMarkdownIt,
   MarkdownRenderResult,
   Store
 } from '@traptitech/traq-markdown-it'
-import { getStore } from './store'
+import { getStore } from '../store'
 
 const createMdStore = async (): Promise<Store> => {
   const store = await getStore()
@@ -32,6 +32,7 @@ let _md: traQMarkdownIt | undefined
 const getMd = async () => {
   if (_md) return _md
   const store = await createMdStore()
+  const { traQMarkdownIt } = await import('./traq-markdown-it')
   _md = new traQMarkdownIt(store, [], 'https://q.trap.jp')
   return _md
 }
