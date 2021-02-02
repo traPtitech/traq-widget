@@ -7,10 +7,10 @@ declare const window: ExtendedWindow
 
 export const setupGlobalFuncs = (): void => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  window.openUserModal = (userId: string): void => {}
+  window.openUserModal = (_userId: string): void => {}
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  window.openGroupModal = (userGroupId: string): void => {}
+  window.openGroupModal = (_userGroupId: string): void => {}
 
   window.changeChannel = (channelPath: string) => {
     if (!confirm(`traQで#${channelPath}を開きますか？`)) return

@@ -1,6 +1,5 @@
 import { html, TemplateResult } from 'lit-html'
 import { until } from 'lit-html/directives/until.js'
-import { rerender } from '../main'
 import { apis } from '../apis'
 
 import './Login.scss'
@@ -28,7 +27,7 @@ const InnerLogin = async (): Promise<TemplateResult> => {
         name: $id.value,
         password: $pass.value
       })
-      rerender()
+      location.reload()
     } catch (e) {
       console.error('ログインに失敗しました', e)
     }
