@@ -18,4 +18,4 @@ traQ用ウィジェット
 
 ## 開発
 `npm run dev`をすると`lccalhost:8500`でdev serverが起動する。
-`/`で本体、`/iframe`でiframeで埋め込まれた状態を確認可能。
+`/widget/`で本体、`/widget/iframe`でiframeで埋め込まれた状態を確認可能。
