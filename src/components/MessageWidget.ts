@@ -48,7 +48,7 @@ const InnerMessageWidget = async (
     )
 
     const store = await getStore()
-    const user = store.userIdMap.get(message.userId)
+    const user = await store.getUser(message.userId)
 
     return html`
       <article class="main-message message">

@@ -76,6 +76,7 @@ interface Store {
   userGroupIdMap: Map<string, UserGroup>
   channelIdMap: Map<string, Channel>
   stampNameMap: Map<string, Stamp>
+  getUser(userId: string): Promise<User>
 }
 
 const createStore = async (): Promise<Store> => {
@@ -101,8 +102,13 @@ const createStore = async (): Promise<Store> => {
     me: me!,
     userGroupIdMap: userGroupIdMap!,
     channelIdMap: channelIdMap!,
-    stampNameMap: stampNameMap!
+    stampNameMap: stampNameMap!,
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    async getUser(userId: string) {
+      // 凍結されたユーザーは一覧にないので取得する
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      return userIdMap!.get(userId) ?? (await apis.getUser(userId)).data
+    }
   }
 }
 
