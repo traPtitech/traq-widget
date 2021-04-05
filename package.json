@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@traptitech/traq": "^3.5.0-4",
-    "@traptitech/traq-markdown-it": "^5.1.0",
+    "@traptitech/traq-markdown-it": "^5.1.1",
     "highlight.js": "^10.7.1",
     "idb-keyval": "^5.0.4",
     "katex": "^0.13.0",
