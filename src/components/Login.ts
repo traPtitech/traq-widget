@@ -5,7 +5,10 @@ import { apis } from '../apis'
 import './Login.scss'
 
 export const Login = (): TemplateResult =>
-  html`${until(InnerLogin(), html`<aside id="login"><p>Loading...</p></aside>`)}`
+  html`${until(
+    InnerLogin(),
+    html`<aside id="login"><p>Loading...</p></aside>`
+  )}`
 
 const InnerLogin = async (): Promise<TemplateResult> => {
   try {
