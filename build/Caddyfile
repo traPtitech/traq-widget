@@ -6,5 +6,7 @@
 
 encode zstd gzip
 
-file_server
+file_server {
+    precompressed br
+}
 root * /usr/share/caddy
