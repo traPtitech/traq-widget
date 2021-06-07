@@ -21,7 +21,7 @@
     "prettier": "^2.3.1",
     "rollup-plugin-brotli": "^3.1.0",
     "sass": "^1.34.0",
-    "typescript": "^4.2.4",
+    "typescript": "^4.3.2",
     "typescript-lit-html-plugin": "^0.9.0",
     "vite": "^2.3.6"
   },
