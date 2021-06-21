@@ -23,7 +23,7 @@
     "sass": "^1.34.1",
     "typescript": "^4.3.4",
     "typescript-lit-html-plugin": "^0.9.0",
-    "vite": "^2.3.7"
+    "vite": "^2.3.8"
   },
   "dependencies": {
     "@traptitech/traq": "^3.5.0-4",
