@@ -10,7 +10,11 @@ const createMdStore = async (): Promise<Store> => {
   return {
     getUser: id => store.userIdMap.get(id),
     getChannel: id => store.channelIdMap.get(id),
-    getChannelPath: id => {
+    getUserGroup: id => store.userGroupIdMap.get(id),
+    getMe: () => store.me,
+    getStampByName: name => store.stampNameMap.get(name),
+    getUserByName: name => store.userNameMap.get(name),
+    generateChannelHref: id => {
       let channel = store.channelIdMap.get(id)
       let path = channel?.name ?? 'unknown'
       while (channel?.parentId) {
@@ -18,12 +22,10 @@ const createMdStore = async (): Promise<Store> => {
         channel = store.channelIdMap.get(channel!.parentId!)
         path = `${channel?.name ?? 'unknown'}/${path}`
       }
-      return path
+      return `https://q.trap.jp/channels/${path}`
     },
-    getUserGroup: id => store.userGroupIdMap.get(id),
-    getMe: () => store.me,
-    getStampByName: name => store.stampNameMap.get(name),
-    getUserByName: name => store.userNameMap.get(name)
+    generateUserHref: () => 'javascript:void(0)',
+    generateUserGroupHref: () => 'javascript:void(0)'
   }
 }
 
