@@ -10,7 +10,6 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,ts}\""
   },
   "devDependencies": {
-    "@types/resize-observer-browser": "^0.1.6",
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",

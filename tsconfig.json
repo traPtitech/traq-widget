@@ -3,8 +3,7 @@
     "module": "esnext",
     "lib": ["es2018", "dom", "dom.iterable"],
     "types": [
-      "vite/client",
-      "resize-observer-browser"
+      "vite/client"
     ],
     "rootDir": "./src",
     "importHelpers": true,
