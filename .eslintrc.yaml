@@ -1,13 +1,8 @@
 extends:
   - eslint:recommended
-  - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
-  - plugin:prettier/recommended
   - plugin:lit/recommended
-plugins:
-  - "@typescript-eslint"
-  - lit
-parser: "@typescript-eslint/parser"
+  - plugin:prettier/recommended
 env:
   browser: true
   node: true
