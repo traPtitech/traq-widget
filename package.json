@@ -26,7 +26,7 @@
     "vite": "^2.6.10"
   },
   "dependencies": {
-    "@traptitech/traq": "^3.7.8-1",
+    "@traptitech/traq": "^3.8.1-0",
     "@traptitech/traq-markdown-it": "^6.0.0",
     "highlight.js": "^11.3.1",
     "idb-keyval": "^6.0.3",
