@@ -1,7 +1,7 @@
 export const openChannelLink = (e: MouseEvent): void => {
-  const $a = (e.target as HTMLElement).closest(
+  const $a = (e.target as HTMLElement).closest<HTMLAnchorElement>(
     'a.message-channel-link'
-  ) as HTMLAnchorElement | null
+  )
   if (!$a) return
 
   // 同じタブで開かない場合は無視

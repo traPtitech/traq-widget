@@ -18,8 +18,7 @@ const createMdStore = async (): Promise<Store> => {
       let channel = store.channelIdMap.get(id)
       let path = channel?.name ?? 'unknown'
       while (channel?.parentId) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        channel = store.channelIdMap.get(channel!.parentId!)
+        channel = store.channelIdMap.get(channel.parentId)
         path = `${channel?.name ?? 'unknown'}/${path}`
       }
       return `https://q.trap.jp/channels/${path}`

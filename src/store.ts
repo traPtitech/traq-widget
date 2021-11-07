@@ -38,25 +38,25 @@ const fetchAndSetUsers = async (): Promise<void> => {
 
 const fetchAndSetMe = async (): Promise<void> => {
   const me = (await apis.getMe()).data
-  set('me', me, store)
+  await set('me', me, store)
 }
 
 const fetchAndSetUserGroups = async (): Promise<void> => {
   const userGroups = (await apis.getUserGroups()).data
   const userGroupIdMap = new Map(userGroups.map(g => [g.id, g]))
-  set('userGroupIdMap', userGroupIdMap, store)
+  await set('userGroupIdMap', userGroupIdMap, store)
 }
 
 const fetchAndSetChannels = async (): Promise<void> => {
   const channels = (await apis.getChannels()).data.public
   const channelIdMap = new Map(channels.map(c => [c.id, c]))
-  set('channelIdMap', channelIdMap, store)
+  await set('channelIdMap', channelIdMap, store)
 }
 
 const fetchAndSetStamps = async (): Promise<void> => {
   const stamps = (await apis.getStamps()).data
   const stampNameMap = new Map(stamps.map(s => [s.name, s]))
-  set('stampNameMap', stampNameMap, store)
+  await set('stampNameMap', stampNameMap, store)
 }
 
 const fetchAndSet = async (): Promise<void> => {
@@ -113,7 +113,7 @@ const createStore = async (): Promise<Store> => {
 }
 
 const initStore = async (): Promise<Store> => {
-  const updatedAt = await get('updatedAt', store)
+  const updatedAt = await get<number>('updatedAt', store)
 
   if (!isCacheAvailable(updatedAt)) {
     await fetchAndSet()
