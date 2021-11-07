@@ -1,5 +1,6 @@
 import { html, TemplateResult } from 'lit-html'
 import { until } from 'lit-html/directives/until.js'
+import { createRef, ref } from 'lit-html/directives/ref.js'
 import { apis } from '../apis'
 
 import './Login.scss'
@@ -18,17 +19,17 @@ const InnerLogin = async (): Promise<TemplateResult> => {
     // eslint-disable-next-line no-empty
   } catch {}
 
-  const login = async (e: Event) => {
-    e.preventDefault()
+  const idRef = createRef<HTMLInputElement>()
+  const passRef = createRef<HTMLInputElement>()
 
-    const $form = e.currentTarget as HTMLFormElement
-    const $id = $form.querySelector('[name="id"]') as HTMLInputElement
-    const $pass = $form.querySelector('[name="pass"]') as HTMLInputElement
+  const login = async (e: Event) => {
+    if (!idRef.value || !passRef.value) return
+    e.preventDefault()
 
     try {
       await apis.login(undefined, {
-        name: $id.value,
-        password: $pass.value
+        name: idRef.value.value,
+        password: passRef.value.value
       })
       location.reload()
     } catch (e) {
@@ -40,8 +41,8 @@ const InnerLogin = async (): Promise<TemplateResult> => {
     <aside id="login">
       <p>デバッグ用ログイン</p>
       <form @submit=${login}>
-        <input name="id" type="text" />
-        <input name="pass" type="password" />
+        <input ${ref(idRef)} name="id" type="text" />
+        <input ${ref(passRef)} name="pass" type="password" />
         <button type="submit">Login</button>
       </form>
     </aside>
