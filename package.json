@@ -7,8 +7,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "type-check": "tsc --noEmit",
-    "lint": "eslint --cache \"src/**/*.{js,ts}\"",
-    "lint:fix": "eslint --fix --cache \"src/**/*.{js,ts}\""
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --fix --cache ."
   },
   "devDependencies": {
     "@types/throttle-debounce": "^2.1.0",
