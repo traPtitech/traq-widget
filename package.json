@@ -11,7 +11,7 @@
     "lint:fix": "eslint --fix --cache ."
   },
   "devDependencies": {
-    "@types/throttle-debounce": "^4.0.0",
+    "@types/throttle-debounce": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.47",
