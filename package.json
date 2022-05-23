@@ -31,7 +31,7 @@
     "@traptitech/traq-markdown-it": "^6.1.8",
     "highlight.js": "^11.5.1",
     "idb-keyval": "^6.1.0",
-    "katex": "^0.15.3",
+    "katex": "^0.15.6",
     "lit-html": "^2.2.3",
     "ress": "^5.0.2",
     "throttle-debounce": "^5.0.0"
