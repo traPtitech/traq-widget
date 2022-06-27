@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/throttle-debounce": "^5.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.22.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.47",
     "eslint": "^8.15.0",
