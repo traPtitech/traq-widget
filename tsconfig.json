@@ -2,9 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "lib": ["es2018", "dom"],
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     "rootDir": "./src",
     "importHelpers": true,
     "strict": true,
