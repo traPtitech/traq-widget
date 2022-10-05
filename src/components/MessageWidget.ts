@@ -7,7 +7,7 @@ import { render } from '../markdown/markdown'
 import { getStore } from '../store'
 import { QuotedMessage } from './QuotedMessage'
 import { File } from './File'
-import { dateToString } from '../utils'
+import { dateToString, isValidUuid } from '../utils'
 import { EmbeddingFile, EmbeddingMessage } from '@traptitech/traq-markdown-it'
 
 import '../markdown/markdown.scss'
@@ -32,6 +32,15 @@ const InnerMessageWidget = async (
     return html`
       <article class="main-message message" data-is-error>
         <main class="error">IDが存在しません</main>
+      </article>
+    `
+  }
+  if (!isValidUuid(id)) {
+    return html`
+      <article class="main-message message" data-is-error>
+        <main class="error">
+          不正なメッセージIDです。URLが間違っていませんか？
+        </main>
       </article>
     `
   }
