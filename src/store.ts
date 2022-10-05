@@ -54,7 +54,11 @@ const fetchAndSetChannels = async (): Promise<void> => {
 }
 
 const fetchAndSetStamps = async (): Promise<void> => {
-  const stamps = (await apis.getStamps()).data
+  const [originalRes, unicodeRes] = await Promise.all([
+    apis.getStamps(undefined, 'original'),
+    apis.getStamps(undefined, 'unicode')
+  ])
+  const stamps = [...originalRes.data, ...unicodeRes.data]
   const stampNameMap = new Map(stamps.map(s => [s.name, s]))
   await set('stampNameMap', stampNameMap, store)
 }
