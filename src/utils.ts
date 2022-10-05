@@ -10,3 +10,6 @@ export const dateToString = (date: string): string => {
 
   return `${day} ${time}`
 }
+
+export const isValidUuid = (uuidStr: string) =>
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(uuidStr)
