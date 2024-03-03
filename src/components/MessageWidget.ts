@@ -58,6 +58,7 @@ const InnerMessageWidget = async (
 
     const store = await getStore()
     const user = await store.getUser(message.userId)
+    const channelPath = await store.getChannelPath(message.channelId)
 
     return html`
       <article class="main-message message">
@@ -72,6 +73,7 @@ const InnerMessageWidget = async (
           ${quotedMessages.map(({ id }) => QuotedMessage(id))}
         </section>
         <footer>
+          <p class="channel-path">${channelPath}</p>
           <a
             href="https://q.trap.jp/messages/${id}"
             target="_blank"
