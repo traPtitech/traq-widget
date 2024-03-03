@@ -13,7 +13,7 @@ COPY ./vite.config.ts .
 RUN npm run build
 
 
-FROM caddy:2.6.1-alpine
+FROM caddy:2.7.6-alpine
 EXPOSE 80
 COPY build/Caddyfile /etc/caddy/Caddyfile
 COPY --from=build /app/dist /usr/share/caddy
