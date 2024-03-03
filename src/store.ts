@@ -81,6 +81,7 @@ interface Store {
   channelIdMap: Map<string, Channel>
   stampNameMap: Map<string, Stamp>
   getUser(userId: string): Promise<User>
+  getChannelPath(channelId: string): Promise<string>
 }
 
 const createStore = async (): Promise<Store> => {
@@ -99,6 +100,22 @@ const createStore = async (): Promise<Store> => {
     get<Map<string, Channel>>('channelIdMap', store),
     get<Map<string, Stamp>>('stampNameMap', store)
   ])
+
+  const getChannelPath = async (channelId: string) => {
+    const nameList: string[] = []
+
+    let currentChannelId: string | null = channelId
+    while (currentChannelId) {
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      const channel = channelIdMap!.get(currentChannelId)
+      nameList.unshift(channel!.name)
+      currentChannelId = channel!.parentId
+      /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    }
+
+    return `#${nameList.join('/')}`
+  }
+
   return {
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
     userIdMap: userIdMap!,
@@ -112,7 +129,8 @@ const createStore = async (): Promise<Store> => {
       // 凍結されたユーザーは一覧にないので取得する
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return userIdMap!.get(userId) ?? (await apis.getUser(userId)).data
-    }
+    },
+    getChannelPath
   }
 }
 
