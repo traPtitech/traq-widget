@@ -30,7 +30,7 @@
     "@traptitech/traq": "^3.17.0-1",
     "@traptitech/traq-markdown-it": "^6.2.1",
     "highlight.js": "^11.9.0",
-    "idb-keyval": "^6.2.0",
+    "idb-keyval": "^6.2.1",
     "katex": "^0.16.9",
     "lit-html": "^3.1.2",
     "ress": "^5.0.2",
